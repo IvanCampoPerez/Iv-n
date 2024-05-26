@@ -1,0 +1,16 @@
+<convert2exe>
+    <uacLevel>asInvoker</uacLevel>
+    <iconfile>C:\Users\Usuario\AppData\Local\Vbsedit\x64\mail.ico</iconfile>
+    <folder>C:\Users\Usuario\IdeaProjects\SaniTech\out\artifacts\SaniTech_jar\launch_executable</folder>
+    <dependencies />
+    <mode>gui</mode>
+    <appName>Launch</appName>
+    <bits>64</bits>
+    <silent>no</silent>
+    <unicode>no</unicode>
+    <regfreecom>no</regfreecom>
+    <custom_description>My Description</custom_description>
+    <custom_copyright>© My Company Name 2024</custom_copyright>
+    <custom_productName>My Product Name</custom_productName>
+    <custom_version>1.0.0.1</custom_version>
+</convert2exe>
