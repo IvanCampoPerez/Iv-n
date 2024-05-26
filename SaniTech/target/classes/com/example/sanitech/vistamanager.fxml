@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1120.0" stylesheets="@../../../stylesVistamanager.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.VistaManagerController">
+    <top>
+        <HBox fx:id="topHbox" style="-fx-background-color: #c1d1e0;">
+            <MenuBar HBox.hgrow="ALWAYS">
+                <menus>
+                    <Menu mnemonicParsing="false" text="Configuración">
+                        <items>
+                            <MenuItem fx:id="proveedoresMenuItem" mnemonicParsing="false" onAction="#abrirVentanaProveedores" text="Proveedores" />
+                            <MenuItem fx:id="articulosMenuItem" mnemonicParsing="false" onAction="#abrirVentanaArticulos" text="Articulos" />
+                            <MenuItem fx:id="comprasMenuItem" mnemonicParsing="false" onAction="#abrirVentanaCompras" text="Compras" />
+                            <MenuItem fx:id="inventarioMenuItem" mnemonicParsing="false" onAction="#abrirVentanaInventario" text="Inventario" />
+                            <MenuItem fx:id="ventasMenuItem" mnemonicParsing="false" onAction="#abrirVentanaVentas" text="Ventas" />
+                            <MenuItem mnemonicParsing="false" text="Clientes" />
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaAdministracion" text="Administración" />
+                            <SeparatorMenuItem mnemonicParsing="false" />
+                            <MenuItem mnemonicParsing="false" onAction="#alternarModoOscuro" text="Modo oscuro" />
+                            <MenuItem mnemonicParsing="false" onAction="#cerrarSesion" text="Cerrar Sesión" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../engranaje.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Proveedores">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaProveedores" text="Proveedores" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../proveedores.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Articulos">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaArticulos" text="Articulos" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../articulos.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+               <Menu mnemonicParsing="false" text="Compras">
+                 <items>
+                   <MenuItem mnemonicParsing="false" onAction="#abrirVentanaCompras" text="Compras" />
+                 </items>
+                  <graphic>
+                     <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../comprar.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Inventario">
+                 <items>
+                   <MenuItem mnemonicParsing="false" onAction="#abrirVentanaInventario" text="Inventario" />
+                 </items>
+                  <graphic>
+                     <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@../../../inventario.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </Menu>
+                    <Menu mnemonicParsing="false" text="Ventas">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaVentas" text="Ventas" />
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaLineasventa" text="Lineas de venta" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../ventas.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Clientes">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaClientes" text="Clientes" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../cliente.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+                    <Menu fx:id="administracionMenu" mnemonicParsing="false" text="Administración">
+                        <items>
+                            <MenuItem mnemonicParsing="false" onAction="#abrirVentanaAdministracion" text="Administración" />
+                        </items>
+                        <graphic>
+                            <ImageView fitHeight="28.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../../herramientas.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <HBox alignment="CENTER_RIGHT" style="-fx-padding: 0 10;">
+                <ImageView fx:id="ivImagenUsuario" fitHeight="28.0" fitWidth="28.0">
+                    <Image url="@../../../user.jpg" />
+                </ImageView>
+                <Label fx:id="nombre" text=" Nombre:" />
+                <Label fx:id="rol" text=" Rol" />
+            </HBox>
+         <VBox prefHeight="36.0" prefWidth="90.0">
+            <children>
+               <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <children>
+                     <Button fx:id="btnMinimizar" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#minimizarVentana" prefHeight="34.0" prefWidth="46.0" text="-" />
+                     <Button fx:id="btnCerrar" layoutX="45.0" layoutY="1.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="34.0" prefWidth="45.0" text="x" />
+                  </children>
+               </AnchorPane>
+            </children>
+         </VBox>
+        </HBox>
+    </top>
+   <center>
+       <AnchorPane fx:id="administracionAnchorPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <TabPane fx:id="tabPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+       </AnchorPane>
+   </center>
+</BorderPane>
