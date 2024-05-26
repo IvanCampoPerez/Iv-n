@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.ComprasController">
+   <children>
+      <TableView fx:id="tbCompras" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0">
+        <columns>
+          <TableColumn fx:id="colLineaCompraId" prefWidth="167.0" text="LineaCompraId" />
+          <TableColumn fx:id="colCodigoArticulo" prefWidth="166.0" text="CodigoArticulo" />
+            <TableColumn fx:id="colPrecioCompra" prefWidth="167.0" text="PrecioCompra" />
+            <TableColumn fx:id="colCantidad" prefWidth="166.0" text="Cantidad" />
+            <TableColumn fx:id="colTotalCompra" prefWidth="167.0" text="TotalCompra" />
+            <TableColumn fx:id="colFechaCompra" prefWidth="166.0" text="FechaCompra" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cbCompras" layoutX="21.0" layoutY="31.0" prefWidth="150.0" promptText="Seleccionar" />
+      <TextField fx:id="tfCompras" layoutX="22.0" layoutY="74.0" promptText="Buscar..." />
+      <Label layoutX="22.0" layoutY="110.0" text="LineaCompraId">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbLineaCompraId" layoutX="22.0" layoutY="128.0" text="LineaCompraId" />
+       <Label layoutX="22.0" layoutY="153.0" text="CodigoArticulo">
+           <font>
+               <Font name="System Bold" size="12.0" />
+           </font>
+       </Label>
+      <Label fx:id="lbCodigoArticulo" layoutX="22.0" layoutY="171.0" text="CodigoArticulo" />
+       <Label layoutX="22.0" layoutY="195.0" text="PrecioCompra">
+           <font>
+               <Font name="System Bold" size="12.0" />
+           </font>
+       </Label>
+      <Label fx:id="lbPrecioCompra" layoutX="22.0" layoutY="213.0" text="PrecioCompra" />
+       <Label layoutX="22.0" layoutY="237.0" text="Cantidad">
+           <font>
+               <Font name="System Bold" size="12.0" />
+           </font>
+       </Label>
+      <Label fx:id="lbCantidad" layoutX="22.0" layoutY="255.0" text="Cantidad" />
+       <Label layoutX="22.0" layoutY="281.0" text="TotalCompra">
+           <font>
+               <Font name="System Bold" size="12.0" />
+           </font>
+       </Label>
+      <Label fx:id="lbTotalCompra" layoutX="22.0" layoutY="299.0" text="TotalCompra" />
+       <Label layoutX="22.0" layoutY="325.0" text="FechaCompra">
+           <font>
+               <Font name="System Bold" size="12.0" />
+           </font>
+       </Label>
+      <Label fx:id="lbFechaCompra" layoutX="22.0" layoutY="343.0" text="FechaCompra" />
+      <Button fx:id="btnAnadir" layoutX="286.0" layoutY="552.0" mnemonicParsing="false" text="Añadir compra" />
+      <Button fx:id="btnEliminar" layoutX="1183.0" layoutY="552.0" mnemonicParsing="false" onAction="#eliminarCompra" text="Eliminar compra" />
+   </children>
+</AnchorPane>
