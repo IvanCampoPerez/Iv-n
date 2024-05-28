@@ -99,7 +99,6 @@ public class ModificarinventarioController {
         // Obtener los datos ingresados por el usuario
         String cantidadDisponible = tfCantidaddisponible.getText();
 
-        // Validar que la cantidadDisponible no esté vacía
         if (cantidadDisponible.isEmpty()) {
             mostrarError("El campo CantidadDisponible es obligatorio");
             return;
@@ -131,7 +130,6 @@ public class ModificarinventarioController {
                 }
             }
 
-            // Establecer la conexión con la base de datos
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
                 // Preparar la consulta SQL de actualizacion o eliminacion
                 String sql;
@@ -171,7 +169,6 @@ public class ModificarinventarioController {
                 inventarioController.cargarDatos();
             }
 
-            // Cerrar la ventana
             cerrarVentana();
 
         } catch (NumberFormatException e) {
