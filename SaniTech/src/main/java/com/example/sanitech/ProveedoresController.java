@@ -142,7 +142,6 @@ public class ProveedoresController {
         Proveedor proveedorSeleccionado = tbProveedores.getSelectionModel().getSelectedItem();
 
         if (proveedorSeleccionado == null) {
-            // Si no se seleccionó ningún proveedor, mostrar un mensaje de error
             mostrarError("Por favor, selecciona un proveedor para eliminar");
             return;
         }
@@ -226,7 +225,6 @@ public class ProveedoresController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "proveedores"
@@ -246,7 +244,7 @@ public class ProveedoresController {
                 tbProveedores.getItems().add(new Proveedor(Codigo_proveedor, Organizacion, Telefono, EMail));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
