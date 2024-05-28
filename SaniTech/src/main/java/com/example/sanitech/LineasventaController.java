@@ -101,7 +101,6 @@ public class LineasventaController {
         Lineasventa lineaventaSeleccionada = tbLineasventa.getSelectionModel().getSelectedItem();
 
         if (lineaventaSeleccionada == null) {
-            // Si no se seleccionó ninguna linea de venta, mostrar un mensaje de error
             mostrarError("Por favor, selecciona una linea de venta para eliminar");
             return;
         }
@@ -164,7 +163,6 @@ public class LineasventaController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "lineas_ventas"
@@ -185,7 +183,7 @@ public class LineasventaController {
                 tbLineasventa.getItems().add(new Lineasventa(LineaVentaId, VentaId, CodigoArticulo, PrecioVenta, Cantidad));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
