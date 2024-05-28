@@ -94,7 +94,7 @@ public class AnadirclientesController {
         // Se aplica el filtro al TextField del prefijo
         tfPrefijo.setTextFormatter(new TextFormatter<>(filtroPrefijo));
 
-        // Listener para asegurar que el primer carácter es siempre "+" y solo permite hasta 3 números después
+        // Listener para asegurar que el primer carácter es siempre "+" y solo permita hasta 3 números después
         tfPrefijo.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.startsWith("+")) {
                 tfPrefijo.setText("+" + newValue.replace("+", ""));
