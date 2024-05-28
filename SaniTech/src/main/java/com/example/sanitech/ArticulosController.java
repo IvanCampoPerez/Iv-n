@@ -114,7 +114,7 @@ public class ArticulosController {
 
     @FXML
     private void ventanaModificarArticulo() {
-        // Verificar si hay una fila seleccionada en la tabla
+        // Se verifica si hay una fila seleccionada en la tabla
         Articulos articuloSeleccionado = tbArticulos.getSelectionModel().getSelectedItem();
         if (articuloSeleccionado != null) {
             try {
@@ -249,7 +249,6 @@ public class ArticulosController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "articulos"
@@ -274,7 +273,7 @@ public class ArticulosController {
                 tbArticulos.getItems().add(new Articulos(codigo_articulo, articulo, codigo_proveedor, precio_compra, precio_venta, fecha_alta));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
