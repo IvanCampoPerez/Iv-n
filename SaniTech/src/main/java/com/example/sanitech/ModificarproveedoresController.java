@@ -98,7 +98,6 @@ public class ModificarproveedoresController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
@@ -108,25 +107,22 @@ public class ModificarproveedoresController {
         String telefono = tfTelefono.getText();
         String email = tfEmail.getText();
 
-        // Validar que la organización no esté vacía
         if (organizacion.isEmpty()) {
             mostrarError("El campo Organización es obligatorio");
             return;
         }
 
-        // Validar que el Telefono contenga solo números
         if (!telefono.isEmpty() && !telefono.matches("\\d+")) {
             mostrarError("Solo se admiten números en el campo Telefono");
             return;
         }
 
-        // Validar el formato del email, que tenga al menos una letra antes y después del símbolo "@", seguida de un punto y al menos dos letras al final del email
+        // Validar el formato del email, que tenga al menos un caracter antes y después del símbolo "@", seguida de un punto y al menos dos letras al final del email
         if (!email.isEmpty() && !email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             mostrarError("El correo electrónico ingresado no es válido");
             return;
         }
 
-        // Establecer la conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de actualizacion
             String sql = "UPDATE proveedores SET Organizacion = ?, Telefono = ?, EMail = ? WHERE Codigo_proveedor = ?";
@@ -157,7 +153,6 @@ public class ModificarproveedoresController {
             proveedoresController.cargarDatos();
         }
 
-        // Cerrar la ventana
        cerrarVentana();
     }
 
