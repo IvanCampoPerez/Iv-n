@@ -23,13 +23,13 @@ public class LoginApplication extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED); // Eliminar la barra de titulo
         primaryStage.show();
 
-        // Establecer tamaño mínimo para el Stage después de que la escena se haya establecido en el Stage
+        // Se establece el tamaño minimo para el Stage despues de que la escena se haya establecido
         primaryStage.setMinWidth(600);
         primaryStage.setMinHeight(400);
 
-        // Obtener el controlador del FXMLLoader
+        // Se obtiene el controlador del FXMLLoader
         LoginController loginController = fxmlLoader.getController();
-        // Configurar la referencia al stage
+        // Se configura la referencia al stage
         loginController.setPrimaryStage(primaryStage);
 
         primaryStage.centerOnScreen();
