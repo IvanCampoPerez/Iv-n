@@ -84,13 +84,11 @@ public class AnadirlineasventaController {
         String ventaId = obtenerUltimaVentaId();
         BigDecimal precioVenta = BigDecimal.ZERO; // Se inicializa el precio de venta como cero
 
-        // Validar que el código de artículo no esté vacío y no contenga espacios en blanco
         if (codigoArticulo.isEmpty() || codigoArticulo.contains(" ")) {
             mostrarError("El campo CodigoArticulo es obligatorio y no puede contener espacios en blanco");
             return;
         }
 
-        // Validar que la cantidad no esté vacía
         if (cantidad.isEmpty()) {
             mostrarError("El campo Cantidad es obligatorio");
             return;
@@ -119,9 +117,9 @@ public class AnadirlineasventaController {
                 return;
             }
 
-            // Establecer la conexión con la base de datos
+
             try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
-                // Comprobar si el artículo ya existe en la tabla "inventario"
+                // Se comprueba si el artículo ya existe en la tabla "inventario"
                 boolean articuloExiste = existeArticuloEnInventario(connection, codigoArticulo);
 
                 // Insertar o actualizar en la tabla "inventario"
@@ -142,7 +140,6 @@ public class AnadirlineasventaController {
                         statement.setBigDecimal(3, precioVenta);
                         statement.setInt(4, cantidadInt);
 
-                        // Ejecutar la consulta
                         int filasAfectadas = statement.executeUpdate();
 
                         // Comprobar si se insertó correctamente
@@ -164,7 +161,6 @@ public class AnadirlineasventaController {
                 mostrarError("Error al conectar a la base de datos: " + e.getMessage());
             }
 
-            // Cerrar la ventana
             cerrarVentana();
 
         } catch (NumberFormatException e) {
@@ -176,7 +172,7 @@ public class AnadirlineasventaController {
     // Metodo para obtener un artículo de la tabla "articulos" por su codigo de articulo
     private Articulos obtenerArticuloPorCodigo(String codigoArticulo) {
         Articulos articulo = null;
-        // Establecer la conexión con la base de datos
+
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL para seleccionar el artículo por su código
             String sql = "SELECT * FROM articulos WHERE codigo_articulo = ?";
@@ -187,7 +183,7 @@ public class AnadirlineasventaController {
                 try (ResultSet resultSet = statement.executeQuery()) {
                     // Verificar si se encontró algún resultado
                     if (resultSet.next()) {
-                        // Crear un objeto Articulos con los datos obtenidos de la consulta
+                        // Se crea un objeto Articulos con los datos obtenidos de la consulta
                         articulo = new Articulos(
                                 resultSet.getString("codigo_articulo"),
                                 resultSet.getString("articulo"),
@@ -208,7 +204,7 @@ public class AnadirlineasventaController {
     // Metodo para obtener la ultima VentaId de la tabla de ventas
     private String obtenerUltimaVentaId() {
         String VentaId = null;
-        // Establecer la conexión con la base de datos
+
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Consulta sql para obtener la ultima VentaId
             String sql = "SELECT VentaId FROM ventas ORDER BY VentaId DESC LIMIT 1";
