@@ -112,7 +112,6 @@ public class ModificararticulosController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
@@ -128,19 +127,16 @@ public class ModificararticulosController {
             fechaAlta = dpFechaalta.getValue().toString();
         }
 
-        // Validar que el código de artículo no esté vacío y no contenga espacios en blanco
         if (codigoArticulo.isEmpty() || codigoArticulo.contains(" ")) {
             mostrarError("El campo código_articulo es obligatorio y no puede contener espacios en blanco");
             return;
         }
 
-        // Validar que el articulo no esté vacío
         if (articulo.isEmpty()) {
             mostrarError("El campo articulo es obligatorio");
             return;
         }
 
-        // Validar que el codigo de proveedor contenga solo números
         if (!codigoProveedor.isEmpty() && !codigoProveedor.matches("\\d+")) {
             mostrarError("Solo se admiten números en el campo codigo_proveedor");
             return;
@@ -168,7 +164,6 @@ public class ModificararticulosController {
             return;
         }
 
-        // Establecer la conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de actualizacion
             String sql = "UPDATE articulos SET codigo_articulo = ?, articulo = ?, codigo_proveedor = ?, precio_compra = ?, precio_venta = ?, fecha_alta = ? WHERE codigo_articulo = ?";
@@ -202,7 +197,6 @@ public class ModificararticulosController {
             articulosController.cargarDatos();
         }
 
-        // Cerrar la ventana
         cerrarVentana();
     }
 
