@@ -95,7 +95,7 @@ public class AnadirarticulosController {
     }
 
     private void anadirArticulo() {
-        // Obtener los datos ingresados por el usuario
+        // Se obtienen los datos ingresados por el usuario de los textfields
         String codigoArticulo = tfCodigoarticulo.getText();
         String articulo = tfArticulo.getText();
         String codigoProveedor = tfCodigoproveedor.getText();
@@ -106,19 +106,16 @@ public class AnadirarticulosController {
             fechaAlta = dpFechaalta.getValue().toString();
         }
 
-        // Validar que el código de artículo no esté vacío y no contenga espacios en blanco
         if (codigoArticulo.isEmpty() || codigoArticulo.contains(" ")) {
             mostrarError("El campo código_articulo es obligatorio y no puede contener espacios en blanco");
             return;
         }
 
-        // Validar que el articulo no esté vacío
         if (articulo.isEmpty()) {
             mostrarError("El campo articulo es obligatorio");
             return;
         }
 
-        // Validar que el codigo de proveedor contenga solo números
         if (!codigoProveedor.isEmpty() && !codigoProveedor.matches("\\d+")) {
             mostrarError("Solo se admiten números en el campo codigo_proveedor");
             return;
@@ -146,7 +143,7 @@ public class AnadirarticulosController {
             return;
         }
 
-        // Establecer la conexión con la base de datos
+        // Conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de inserción
             String sql = "INSERT INTO articulos (codigo_articulo, articulo, codigo_proveedor, precio_compra, precio_venta, fecha_alta) VALUES (?, ?, ?, ?, ?, ?)";
@@ -182,7 +179,6 @@ public class AnadirarticulosController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
