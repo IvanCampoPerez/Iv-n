@@ -86,7 +86,6 @@ public class AnadirventasController {
             fechaFactura = dpFechaFactura.getValue().toString();
         }
 
-        // Validar que el campo ClienteId no esté vacío y contenga solo números enteros
         if (clienteId.isEmpty()) {
             mostrarError("El campo ClienteId está vacío");
             return;
@@ -133,7 +132,7 @@ public class AnadirventasController {
             e.printStackTrace();
             mostrarError("Error al añadir la venta: " + e.getMessage());
         }
-        // Cerrar la ventana
+
         cerrarVentana();
     }
 
@@ -170,7 +169,6 @@ public class AnadirventasController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
