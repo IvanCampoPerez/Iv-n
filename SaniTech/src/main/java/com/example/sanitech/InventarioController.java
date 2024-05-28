@@ -115,7 +115,6 @@ public class InventarioController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "inventario"
@@ -134,7 +133,7 @@ public class InventarioController {
                 tbInventario.getItems().add(new Inventario(InventarioId, CodigoArticulo, CantidadDisponible));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
