@@ -89,25 +89,22 @@ public class AnadirproveedoresController {
         String telefono = tfTelefono.getText();
         String email = tfEmail.getText();
 
-        // Validar que la organización no esté vacía
         if (organizacion.isEmpty()) {
             mostrarError("El campo Organización es obligatorio");
             return;
         }
 
-        // Validar que el Telefono contenga solo números
         if (!telefono.isEmpty() && !telefono.matches("\\d+")) {
             mostrarError("Solo se admiten números en el campo Telefono");
             return;
         }
 
-        // Validar el formato del email, que tenga al menos una letra antes y después del símbolo "@", seguida de un punto y al menos dos letras al final del email
+        // Se valida que el formato del email tenga al menos un caracter antes y después del símbolo "@", seguida de un punto y al menos dos letras al final del email
         if (!email.isEmpty() && !email.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")) {
             mostrarError("El correo electrónico ingresado no es válido");
             return;
         }
 
-        // Establecer la conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de inserción
             String sql = "INSERT INTO proveedores (Organizacion, Telefono, Email) VALUES (?, ?, ?)";
@@ -132,7 +129,6 @@ public class AnadirproveedoresController {
             mostrarError("Error al conectar a la base de datos: " + e.getMessage());
         }
 
-        // Cerrar la ventana
         cerrarVentana();
     }
 
@@ -140,7 +136,6 @@ public class AnadirproveedoresController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
