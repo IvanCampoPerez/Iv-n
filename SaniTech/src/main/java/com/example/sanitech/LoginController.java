@@ -63,12 +63,12 @@ public class LoginController {
         // Configuración del evento del CheckBox
         mostrarContraseniaCheckBox.setOnAction(event -> {
             if (mostrarContraseniaCheckBox.isSelected()) {
-                // Mostrar el TextField y ocultar el PasswordField
+                // Se muestra el TextField mientras se oculta el PasswordField
                 contraseniaTextField.setText(contraseniaPasswordField.getText());
                 contraseniaPasswordField.setVisible(false);
                 contraseniaTextField.setVisible(true);
             } else {
-                // Mostrar el PasswordField y ocultar el TextField
+                // Se muestra el PasswordField mientras se oculta el TextField
                 contraseniaPasswordField.setText(contraseniaTextField.getText());
                 contraseniaTextField.setVisible(false);
                 contraseniaPasswordField.setVisible(true);
@@ -114,7 +114,7 @@ public class LoginController {
             if (contraseniaCorrecta) {
                 // Si tanto el usuario como la contraseña son correctos, cierra la ventana de inicio de sesión
                 primaryStage.close();
-                // Abre la ventana de la aplicación principal
+                // Se abre la ventana de la aplicación principal
                 VistaManagerApplication vistaManagerApp = new VistaManagerApplication();
                 vistaManagerApp.setLoginController(this);
                 Platform.runLater(() -> {
@@ -125,11 +125,9 @@ public class LoginController {
                     }
                 });
             } else {
-                // Si la contraseña es incorrecta, muestra un mensaje de error
                 mostrarError("Contraseña incorrecta");
             }
         } else {
-            // Si el usuario no es correcto, muestra un mensaje de error
             mostrarError("Usuario incorrecto");
         }
     }
