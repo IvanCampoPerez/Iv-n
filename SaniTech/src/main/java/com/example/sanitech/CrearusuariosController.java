@@ -129,12 +129,10 @@ public class CrearusuariosController {
 
         // Validar que los campos no estén vacíos
         if (id.isEmpty() || nombre.isEmpty() || contrasena.isEmpty() || rol.isEmpty()) {
-            // Mostrar un mensaje de error o realizar alguna acción adecuada
             mostrarError("Todos los campos son obligatorios");
             return;
         }
 
-        // Validar que el Id y la contraseña contengan solo números
         if (!id.matches("\\d+")) {
             mostrarError("Solo se admiten números en el campo ID");
             return;
@@ -145,7 +143,6 @@ public class CrearusuariosController {
             return;
         }
 
-        // Establecer la conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de inserción
             String sql = "INSERT INTO usuarios (id, nombre, password, rol, imagen) VALUES (?, ?, ?, ?, ?)";
@@ -193,7 +190,6 @@ public class CrearusuariosController {
             mostrarError("Error al conectar a la base de datos: " + e.getMessage());
         }
 
-        // Cerrar la ventana
         cerrarVentana();
 
         } catch (SQLException e) {
@@ -205,7 +201,6 @@ public class CrearusuariosController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
