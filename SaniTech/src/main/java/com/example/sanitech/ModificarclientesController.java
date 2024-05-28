@@ -169,7 +169,6 @@ public class ModificarclientesController {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
 
-        // Cerrar la ventana actual
         stage.close();
     }
 
@@ -223,7 +222,6 @@ public class ModificarclientesController {
         // Si el campo teléfono está vacío, se guarda el teléfono completo como vacío si no, se guarda el prefijo mas el teléfono
         String telefonoCompleto = telefono.isEmpty() ? "" : prefijo + " " + telefono;
 
-        // Establecer la conexión con la base de datos
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL de actualizacion
             String sql = "UPDATE clientes SET Nombre = ?, Apellidos = ?, Compania = ?, Direccion = ?, Ciudad = ?, Comunidad = ?, Pais = ?, CodigoPostal = ?, Telefono = ?, EmpleadoId = ? WHERE ClienteId = ?";
@@ -261,7 +259,6 @@ public class ModificarclientesController {
             clientesController.cargarDatos();
         }
 
-        // Cerrar la ventana
         cerrarVentana();
     }
 
