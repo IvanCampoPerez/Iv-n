@@ -123,12 +123,10 @@ public class ComprasController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Si el usuario confirma la eliminación se procede con esta
             if (eliminarCompraBD(compraSeleccionada)) {
-                // Si la eliminación fue exitosa, mostrar un mensaje de éxito
                 mostrarInformacion("La factura de compra fue eliminada correctamente");
                 // Actualizar la tabla de lineas_compras
                 cargarDatosDesdeBD();
             } else {
-                // Si hubo un error al eliminar, mostrar un mensaje de error
                 mostrarError("No se pudo eliminar la factura de compra");
             }
         }
@@ -171,7 +169,6 @@ public class ComprasController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "lineas_compras"
@@ -196,7 +193,7 @@ public class ComprasController {
                 tbCompras.getItems().add(new Compras(LineaCompraId, CodigoArticulo, PrecioCompra, Cantidad, TotalCompra, FechaCompra));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
