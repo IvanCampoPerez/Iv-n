@@ -92,13 +92,11 @@ public class AnadircomprasController {
             fechaCompra = dpFechaCompra.getValue().toString();
         }
 
-        // Validar que el código de artículo no esté vacío y no contenga espacios en blanco
         if (codigoArticulo.isEmpty() || codigoArticulo.contains(" ")) {
             mostrarError("El campo código_articulo es obligatorio y no puede contener espacios en blanco");
             return;
         }
 
-        // Validar que la cantidad no esté vacía
         if (cantidad.isEmpty()) {
             mostrarError("El campo cantidad es obligatorio");
             return;
@@ -176,7 +174,6 @@ public class AnadircomprasController {
                 mostrarError("Error al conectar a la base de datos: " + e.getMessage());
             }
 
-            // Cerrar la ventana
             cerrarVentana();
 
         } catch (NumberFormatException e) {
@@ -188,18 +185,18 @@ public class AnadircomprasController {
     // Metodo para obtener un artículo de la tabla "articulos" por su codigo de articulo
     private Articulos obtenerArticuloPorCodigo(String codigoArticulo) {
         Articulos articulo = null;
-        // Establecer la conexión con la base de datos
+
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
             // Preparar la consulta SQL para seleccionar el artículo por su código
             String sql = "SELECT * FROM articulos WHERE codigo_articulo = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 // Establecer el parámetro en la consulta preparada
                 statement.setString(1, codigoArticulo);
-                // Ejecutar la consulta
+
                 try (ResultSet resultSet = statement.executeQuery()) {
                     // Verificar si se encontró algún resultado
                     if (resultSet.next()) {
-                        // Crear un objeto Articulos con los datos obtenidos de la consulta
+                        // Se crea un objeto Articulos con los datos obtenidos de la consulta
                         articulo = new Articulos(
                                 resultSet.getString("codigo_articulo"),
                                 resultSet.getString("articulo"),
@@ -252,8 +249,7 @@ public class AnadircomprasController {
     private void cerrarVentana() {
         // Obtener el Stage (escenario) actual
         Stage stage = (Stage) btnCancelar.getScene().getWindow();
-
-        // Cerrar la ventana actual
+        
         stage.close();
     }
 
