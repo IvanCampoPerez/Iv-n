@@ -109,7 +109,6 @@ public class VentasController {
         Ventas ventaSeleccionada = tbVentas.getSelectionModel().getSelectedItem();
 
         if (ventaSeleccionada == null) {
-            // Si no se seleccionó ninguna venta, mostrar un mensaje de error
             mostrarError("Por favor, selecciona una venta para eliminar");
             return;
         }
@@ -140,7 +139,7 @@ public class VentasController {
         // Obtener el ClienteId
         String clienteId = lbClienteId.getText().trim();
 
-        // Validar que el ClienteId esté asociado al EmpleadoId del usuario conectado
+        // Se valida que el ClienteId esté asociado al EmpleadoId del usuario conectado
         if (!clienteAsociadoAlEmpleado(clienteId, empleadoId)) {
             mostrarError("El ClienteId no está asociado a su EmpleadoId");
             return false;
@@ -205,7 +204,6 @@ public class VentasController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "ventas"
@@ -230,7 +228,7 @@ public class VentasController {
                 tbVentas.getItems().add(new Ventas(VentaId, ClienteId, FechaFactura, TotalNeto, TotalIVA, Total));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
