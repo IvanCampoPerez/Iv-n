@@ -30,7 +30,7 @@ public class VistaManagerApplication extends Application {
         primaryStage.setTitle("Manager");
         primaryStage.setScene(scene);
         controller.setScene(scene);
-        primaryStage.initStyle(StageStyle.UNDECORATED); // Eliminar la barra de titulo
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 
         // Establecer tamaño mínimo para el Stage después de que la escena se haya establecido en el Stage
@@ -43,12 +43,12 @@ public class VistaManagerApplication extends Application {
             obtenerInformacionUsuario(usuarioConectado, controller);
         }
 
-        // Aplicar el modo oscuro si está activado
+        // Se aplica el modo oscuro si está activado
         if (modoOscuro) {
             controller.setModoOscuro(true);
         }
 
-        // Centrar la ventana en la pantalla
+        // Se centra la ventana en la pantalla
         primaryStage.centerOnScreen();
     }
 
@@ -58,7 +58,6 @@ public class VistaManagerApplication extends Application {
         String user = "root";
         String password = "rootpass";
 
-        // Inicializa la conexión
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String sql = "SELECT nombre, rol, id FROM usuarios WHERE nombre = ?";
             try (PreparedStatement statement = conn.prepareStatement(sql)) {
