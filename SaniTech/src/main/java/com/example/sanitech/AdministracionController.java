@@ -49,7 +49,7 @@ public class AdministracionController {
         colRol.setCellValueFactory(new PropertyValueFactory<>("rol"));
         btnCrear.setOnAction(event -> abrirVentanaCrearUsuario());
 
-        // Llena la tabla con datos desde la base de datos
+        // Se llena la tabla con datos de la base de datos
         cargarDatosDesdeBD();
     }
 
@@ -59,7 +59,6 @@ public class AdministracionController {
         Usuario usuarioSeleccionado = tbUsuarios.getSelectionModel().getSelectedItem();
 
         if (usuarioSeleccionado == null) {
-            // Si no se seleccionó ningún usuario, mostrar un mensaje de error
             CrearusuariosController.mostrarError("Por favor, selecciona un usuario para eliminar");
             return;
         }
@@ -70,7 +69,6 @@ public class AdministracionController {
             return;
         }
 
-        // Mostrar una alerta de confirmación para confirmar la eliminación
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmar eliminación");
         alert.setHeaderText("¿Estás seguro de que quieres eliminar este usuario? Su EmpleadoId en clientes se eliminará por consiguiente.");
@@ -80,12 +78,12 @@ public class AdministracionController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             // Si el usuario confirma la eliminación se procede con esta
             if (eliminarUsuarioBD(usuarioSeleccionado)) {
-                // Si la eliminación fue exitosa, mostrar un mensaje de éxito
+                // Si la eliminación se realiza, se muestra un mensaje de éxito
                 mostrarInformacion("El usuario fue eliminado correctamente");
-                // Actualizar la tabla de usuarios
+
                 cargarDatosDesdeBD();
             } else {
-                // Si hubo un error al eliminar, mostrar un mensaje de error
+                // Si hubo un error al eliminar
                 CrearusuariosController.mostrarError("No se pudo eliminar el usuario");
             }
         }
@@ -112,7 +110,7 @@ public class AdministracionController {
                 tbUsuarios.getItems().add(new Usuario(id, nombre, rol));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Se cierra la conexión
             rs.close();
             statement.close();
             conn.close();
@@ -140,7 +138,7 @@ public class AdministracionController {
             stage.setTitle("Crear Usuario");
 
             // Mostrar la ventana
-            stage.initStyle(StageStyle.UNDECORATED); // Eliminar la barra de título
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -150,7 +148,7 @@ public class AdministracionController {
     // Método para eliminar un usuario de la base de datos
     private boolean eliminarUsuarioBD(Usuario usuario) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
-            // Desactivar el modo de autocommit
+            // Se desactiva el modo de autocommit
             connection.setAutoCommit(false);
 
             try {
