@@ -148,7 +148,6 @@ public class ClientesController {
         Clientes clienteSeleccionado = tbClientes.getSelectionModel().getSelectedItem();
 
         if (clienteSeleccionado == null) {
-            // Si no se seleccionó ningun cliente, mostrar un mensaje de error
             mostrarError("Por favor, selecciona un cliente para eliminar");
             return;
         }
@@ -273,7 +272,6 @@ public class ClientesController {
 
     private void cargarDatosDesdeBD() {
         try {
-            // Conexión a la base de datos "saneamientos"
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "clientes"
@@ -300,7 +298,7 @@ public class ClientesController {
                 tbClientes.getItems().add(new Clientes(ClienteId, Nombre, Apellidos, Compania, Direccion, Ciudad, Comunidad, Pais, CodigoPostal, Telefono, EmpleadoId));
             }
 
-            // Cerrar la conexión y liberar los recursos
+            // Cerrar la conexión
             rs.close();
             statement.close();
             conn.close();
