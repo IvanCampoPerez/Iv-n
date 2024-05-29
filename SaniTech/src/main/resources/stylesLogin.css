@@ -1,6 +1,7 @@
 /* Estilos para la barra de título */
 #topHbox {
     -fx-background-color: #333333;
+    -fx-background-radius: 5px;
 }
 
 /* Estilos específicos para los botones btnMinimizar y btnCerrar */
@@ -25,5 +26,7 @@
     -fx-background-color: #f0f0f0; /* Color de fondo */
     -fx-border-color: black; /* Color del borde */
     -fx-border-width: 2px; /* Ancho del borde */
-    -fx-border-radius: 5px; /* Radio de borde */
+    -fx-border-radius: 0px 0px 0px 0px; /* Radio de borde */
 }
+
+
