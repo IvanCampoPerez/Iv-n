@@ -2,6 +2,10 @@ package com.example.sanitech;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -9,10 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.function.UnaryOperator;
 
 import static com.example.sanitech.CrearusuariosController.mostrarError;
@@ -69,6 +70,10 @@ public class ModificarclientesController {
     @FXML
     private Button btnCerrar;
 
+    private ObservableList<String> sugerenciasEmpleados = FXCollections.observableArrayList();
+    @FXML
+    private ListView<String> lvSugerencias;
+
     @FXML
     private void initialize() {
         btnGuardar.setOnAction(event -> modificarCliente());
@@ -105,6 +110,23 @@ public class ModificarclientesController {
         };
 
         tfTelefono.setTextFormatter(new TextFormatter<>(filtroTelefono));
+
+        // Se configura el autocompletado para tfEmpleadoId
+        tfEmpleadoId.setOnKeyReleased(this::actualizarSugerencias);
+        lvSugerencias.setOnMouseClicked(event -> {
+            String selected = lvSugerencias.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                tfEmpleadoId.setText(selected);
+                lvSugerencias.setVisible(false);
+            }
+        });
+
+        // Se asegura que el ListView este al frente cuando se muestre
+        lvSugerencias.visibleProperty().addListener((obs, wasVisible, isNowVisible) -> {
+            if (isNowVisible) {
+                lvSugerencias.toFront();
+            }
+        });
     }
 
     @FXML
@@ -131,6 +153,35 @@ public class ModificarclientesController {
     protected void minimizarVentana(ActionEvent event) {
         Stage stage = (Stage) btnMinimizar.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    private void actualizarSugerencias(KeyEvent event) {
+        String textoIngresado = tfEmpleadoId.getText();
+        if (textoIngresado.isEmpty()) {
+            lvSugerencias.setVisible(false);
+            return;
+        }
+
+        sugerenciasEmpleados.clear();
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
+            String sql = "SELECT id FROM usuarios WHERE id LIKE ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, textoIngresado + "%");
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    sugerenciasEmpleados.add(rs.getString("id"));
+                }
+            }
+        } catch (SQLException e) {
+            mostrarError("Error al conectar a la base de datos: " + e.getMessage());
+        }
+
+        if (!sugerenciasEmpleados.isEmpty()) {
+            lvSugerencias.setItems(sugerenciasEmpleados);
+            lvSugerencias.setVisible(true);
+        } else {
+            lvSugerencias.setVisible(false);
+        }
     }
 
     public void setClientesController(ClientesController clientesController) { // Setter para establecer el controlador de ClientesController
