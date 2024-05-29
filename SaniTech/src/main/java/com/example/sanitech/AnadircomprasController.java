@@ -2,6 +2,10 @@ package com.example.sanitech;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -48,11 +52,32 @@ public class AnadircomprasController {
         this.comprasController = comprasController;
     }
 
+    private ObservableList<String> sugerenciasArticulos = FXCollections.observableArrayList();
+    @FXML
+    private ListView<String> lvSugerencias;
+
     @FXML
     private void initialize() {
         // Configura el evento de clic para el botón "Guardar" y "Cancelar"
         btnGuardar.setOnAction(event -> anadirCompra());
         btnCancelar.setOnAction(event -> cerrarVentana());
+
+        // Se configura el autocompletado para tfCodigoArticulo
+        tfCodigoArticulo.setOnKeyReleased(this::actualizarSugerencias);
+        lvSugerencias.setOnMouseClicked(event -> {
+            String selected = lvSugerencias.getSelectionModel().getSelectedItem();
+            if (selected != null) {
+                tfCodigoArticulo.setText(selected);
+                lvSugerencias.setVisible(false);
+            }
+        });
+
+        // Se asegura que el ListView este al frente cuando se muestre
+        lvSugerencias.visibleProperty().addListener((obs, wasVisible, isNowVisible) -> {
+            if (isNowVisible) {
+                lvSugerencias.toFront();
+            }
+        });
     }
 
     @FXML
@@ -79,6 +104,35 @@ public class AnadircomprasController {
     protected void minimizarVentana(ActionEvent event) {
         Stage stage = (Stage) btnMinimizar.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    private void actualizarSugerencias(KeyEvent event) {
+        String textoIngresado = tfCodigoArticulo.getText();
+        if (textoIngresado.isEmpty()) {
+            lvSugerencias.setVisible(false);
+            return;
+        }
+
+        sugerenciasArticulos.clear();
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
+            String sql = "SELECT codigo_articulo FROM articulos WHERE codigo_articulo LIKE ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, textoIngresado + "%");
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    sugerenciasArticulos.add(rs.getString("codigo_articulo"));
+                }
+            }
+        } catch (SQLException e) {
+            mostrarError("Error al conectar a la base de datos: " + e.getMessage());
+        }
+
+        if (!sugerenciasArticulos.isEmpty()) {
+            lvSugerencias.setItems(sugerenciasArticulos);
+            lvSugerencias.setVisible(true);
+        } else {
+            lvSugerencias.setVisible(false);
+        }
     }
 
     private void anadirCompra() {
