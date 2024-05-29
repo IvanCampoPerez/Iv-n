@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -28,16 +29,17 @@
       <Label layoutX="200.0" layoutY="431.0" text="EmpleadoId" />
       <Button fx:id="btnGuardar" layoutX="200.0" layoutY="463.0" mnemonicParsing="false" text="Guardar" />
       <Button fx:id="btnCancelar" layoutX="500.0" layoutY="463.0" mnemonicParsing="false" text="Cancelar" />
-      <TextField fx:id="tfNombre" layoutX="412.0" layoutY="60.0" />
-      <TextField fx:id="tfApellidos" layoutX="413.0" layoutY="103.0" />
+      <TextField fx:id="tfNombre" layoutX="414.0" layoutY="60.0" />
+      <TextField fx:id="tfApellidos" layoutX="414.0" layoutY="103.0" />
       <TextField fx:id="tfCompania" layoutX="414.0" layoutY="145.0" />
-      <TextField fx:id="tfDireccion" layoutX="415.0" layoutY="187.0" />
-      <TextField fx:id="tfCiudad" layoutX="415.0" layoutY="229.0" />
-      <TextField fx:id="tfComunidad" layoutX="415.0" layoutY="271.0" />
+      <TextField fx:id="tfDireccion" layoutX="414.0" layoutY="187.0" />
+      <TextField fx:id="tfCiudad" layoutX="414.0" layoutY="229.0" />
+      <TextField fx:id="tfComunidad" layoutX="414.0" layoutY="271.0" />
       <TextField fx:id="tfPais" layoutX="414.0" layoutY="310.0" />
-      <TextField fx:id="tfCodigoPostal" layoutX="416.0" layoutY="348.0" />
+      <TextField fx:id="tfCodigoPostal" layoutX="414.0" layoutY="348.0" />
       <TextField fx:id="tfPrefijo" layoutX="360.0" layoutY="385.0" prefHeight="26.0" prefWidth="44.0" />
-      <TextField fx:id="tfTelefono" layoutX="416.0" layoutY="386.0" />
+      <TextField fx:id="tfTelefono" layoutX="414.0" layoutY="386.0" />
       <TextField fx:id="tfEmpleadoId" layoutX="414.0" layoutY="427.0" />
+      <ListView fx:id="lvSugerencias" layoutX="414.0" layoutY="453.0" prefHeight="41.0" prefWidth="200.0" visible="false" />
    </children>
 </AnchorPane>
