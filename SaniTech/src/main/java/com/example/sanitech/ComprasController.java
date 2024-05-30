@@ -100,6 +100,8 @@ public class ComprasController {
                 lbFechaCompra.setText(String.valueOf(newSelection.getFechaCompra()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbCompras.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

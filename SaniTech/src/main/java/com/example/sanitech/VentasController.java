@@ -101,6 +101,8 @@ public class VentasController {
                 lbTotal.setText(String.valueOf(newSelection.getTotal()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbVentas.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

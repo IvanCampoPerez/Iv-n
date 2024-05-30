@@ -96,6 +96,8 @@ public class ProveedoresController {
                 ttEmail.setText(newSelection.getEmail());
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbProveedores.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

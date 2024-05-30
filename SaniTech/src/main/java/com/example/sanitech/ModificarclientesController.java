@@ -200,11 +200,16 @@ public class ModificarclientesController {
         tfCodigoPostal.setText(clientes.getCodigoPostal());
         // Se obtiene el prefijo y el telefono por separado
         String telefonoCompleto = clientes.getTelefono();
-        String[] telefonoPartes = telefonoCompleto.split(" ", 2);
-        tfPrefijo.setText(telefonoPartes[0]);
-        if (telefonoPartes.length > 1) {
-            tfTelefono.setText(telefonoPartes[1]);
+        if (telefonoCompleto != null && !telefonoCompleto.isEmpty()) {
+            String[] telefonoPartes = telefonoCompleto.split(" ", 2);
+            tfPrefijo.setText(telefonoPartes[0]);
+            if (telefonoPartes.length > 1) {
+                tfTelefono.setText(telefonoPartes[1]);
+            } else {
+                tfTelefono.setText("");
+            }
         } else {
+            tfPrefijo.setText("");
             tfTelefono.setText("");
         }
         tfEmpleadoId.setText(String.valueOf(clientes.getEmpleadoId()));

@@ -110,6 +110,8 @@ public class ArticulosController {
                 lbFechaalta.setText(String.valueOf(newSelection.getFechaalta()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbArticulos.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

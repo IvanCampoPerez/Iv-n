@@ -93,6 +93,8 @@ public class LineasventaController {
                 lbCantidad.setText(String.valueOf(newSelection.getCantidad()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbLineasventa.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

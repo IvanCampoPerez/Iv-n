@@ -73,6 +73,8 @@ public class InventarioController {
                 lbCantidadDisponible.setText(String.valueOf(newSelection.getCantidadDisponible()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbInventario.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

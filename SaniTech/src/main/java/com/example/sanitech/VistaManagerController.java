@@ -63,6 +63,9 @@ public class VistaManagerController {
     private Button btnMinimizar;
 
     @FXML
+    private Button btnMaximizar;
+
+    @FXML
     private Button btnCerrar;
 
     @FXML
@@ -89,6 +92,18 @@ public class VistaManagerController {
     protected void minimizarVentana(ActionEvent event) {
         Stage stage = (Stage) btnMinimizar.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    @FXML
+    protected void maximizarVentana(ActionEvent event) {
+        Stage stage = (Stage) btnMaximizar.getScene().getWindow();
+        if (stage.isMaximized()) {
+            stage.setMaximized(false);
+            btnMaximizar.setText("□");
+        } else {
+            stage.setMaximized(true);
+            btnMaximizar.setText("❐");
+        }
     }
 
     // Métodos para abrir las ventanas en la principal
@@ -303,6 +318,12 @@ public class VistaManagerController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setResizable(true); // Permite redimensionar la ventana
+
+        // Evento para que cuando se cierre la ventana por el Sistema Operativo se actualice el estado de sesion del usuario
+        stage.setOnCloseRequest(event -> {
+            actualizarEstadoSesionUsuario(nombreUsuario, false);
+        });
     }
 
     // Método para establecer la escena

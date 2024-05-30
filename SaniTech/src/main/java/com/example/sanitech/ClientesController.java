@@ -140,6 +140,8 @@ public class ClientesController {
                 lbEmpleadoId.setText(String.valueOf(newSelection.getEmpleadoId()));
             }
         });
+        // Ajusta automaticamente el tamaño de las columnas
+        tbClientes.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML

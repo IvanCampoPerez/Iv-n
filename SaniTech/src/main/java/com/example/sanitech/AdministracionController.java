@@ -51,6 +51,9 @@ public class AdministracionController {
 
         // Se llena la tabla con datos de la base de datos
         cargarDatosDesdeBD();
+
+        // Ajusta automaticamente el tamaño de las columnas
+        tbUsuarios.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     }
 
     @FXML
