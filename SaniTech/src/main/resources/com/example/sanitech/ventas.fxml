@@ -8,10 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
+
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.VentasController">
    <children>
       <TableView fx:id="tbVentas" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
@@ -19,7 +18,7 @@
           <TableColumn fx:id="colVentaId" prefWidth="166.0" text="VentaId" />
           <TableColumn fx:id="colClienteId" prefWidth="167.0" text="ClienteId" />
             <TableColumn fx:id="colFechaFactura" prefWidth="166.0" text="FechaFactura" />
-            <TableColumn fx:id="colTotalNeto" prefWidth="167.0" text="TotalNeto" />
+            <TableColumn fx:id="colTotalBase" prefWidth="167.0" text="TotalBase" />
             <TableColumn fx:id="colTotalIVA" prefWidth="166.0" text="TotalIVA" />
             <TableColumn fx:id="colTotal" prefWidth="167.0" text="Total" />
         </columns>
@@ -44,12 +43,12 @@
            </font>
        </Label>
       <Label fx:id="lbFechaFactura" layoutX="28.0" layoutY="235.0" text="FechaFactura" />
-       <Label layoutX="28.0" layoutY="263.0" text="TotalNeto">
+       <Label layoutX="28.0" layoutY="263.0" text="TotalBase">
            <font>
                <Font name="System Bold" size="12.0" />
            </font>
        </Label>
-      <Label fx:id="lbTotalNeto" layoutX="28.0" layoutY="281.0" text="TotalNeto" />
+      <Label fx:id="lbTotalBase" layoutX="28.0" layoutY="281.0" text="TotalBase" />
        <Label layoutX="28.0" layoutY="311.0" text="TotalIVA">
            <font>
                <Font name="System Bold" size="12.0" />
