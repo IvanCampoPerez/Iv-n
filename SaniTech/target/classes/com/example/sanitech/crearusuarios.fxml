@@ -10,10 +10,10 @@
 
 <AnchorPane minWidth="-Infinity" onMouseDragged="#onMouseDragged" onMousePressed="#onMousePressed" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../stylesLogin.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.CrearusuariosController">
    <children>
-      <HBox fx:id="topHbox" prefHeight="25.0" prefWidth="600.0">
+      <HBox fx:id="topHbox" prefHeight="30.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="30.0" prefWidth="554.0" />
-            <Label prefHeight="26.0" prefWidth="556.0" text="Crear usuario" textFill="#faf6f6" />
+            <HBox prefHeight="26.0" prefWidth="472.0" />
+            <Label prefHeight="26.0" prefWidth="487.0" text="Crear usuario" textFill="#faf6f6" />
             <Button fx:id="btnMinimizar" mnemonicParsing="false" onAction="#minimizarVentana" text="-" />
             <Button fx:id="btnCerrar" mnemonicParsing="false" onAction="#cerrarVentana" text="x" />
          </children>
@@ -29,7 +29,6 @@
       <TextField fx:id="tfNombre" layoutX="292.0" layoutY="120.0" />
       <Label layoutX="188.0" layoutY="191.0" text="Contraseña" />
       <TextField fx:id="tfContrasena" layoutX="293.0" layoutY="186.0" />
-      <HBox prefHeight="26.0" prefWidth="600.0" />
       <ComboBox fx:id="cbRol" layoutX="292.0" layoutY="252.0" prefWidth="150.0" promptText="Seleccionar..." />
    </children>
 </AnchorPane>

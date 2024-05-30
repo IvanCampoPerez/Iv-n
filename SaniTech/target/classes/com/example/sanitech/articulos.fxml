@@ -10,9 +10,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.ArticulosController">
    <children>
-      <TableView fx:id="tbArticulos" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="tbArticulos" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
         <columns>
           <TableColumn fx:id="colCodigoarticulo" prefWidth="167.0" text="codigo_articulo" />
           <TableColumn fx:id="colArticulo" prefWidth="166.0" text="articulo" />
@@ -22,9 +24,15 @@
             <TableColumn fx:id="colFechaalta" prefWidth="166.0" text="fecha_alta" />
         </columns>
       </TableView>
-      <Button fx:id="btnAnadir" layoutX="286.0" layoutY="549.0" mnemonicParsing="false" text="Añadir articulo" />
-      <Button fx:id="btnModificar" layoutX="731.0" layoutY="549.0" mnemonicParsing="false" onAction="#ventanaModificarArticulo" text="Modificar articulo" />
-      <Button fx:id="btnEliminar" layoutX="1184.0" layoutY="549.0" mnemonicParsing="false" onAction="#eliminarArticulo" text="Eliminar articulo" />
+       <HBox layoutX="286.0" layoutY="541.0" spacing="20.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0">
+           <children>
+              <Button fx:id="btnAnadir" mnemonicParsing="false" text="Añadir articulo" />
+               <Region HBox.hgrow="ALWAYS" />
+              <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#ventanaModificarArticulo" text="Modificar articulo" />
+               <Region HBox.hgrow="ALWAYS" />
+              <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminarArticulo" text="Eliminar articulo" />
+           </children>
+       </HBox>
       <Label layoutX="22.0" layoutY="109.0" text="codigo_articulo">
          <font>
             <Font name="System Bold" size="12.0" />
