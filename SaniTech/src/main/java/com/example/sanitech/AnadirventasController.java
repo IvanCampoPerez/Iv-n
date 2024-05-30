@@ -169,7 +169,7 @@ public class AnadirventasController {
         String user = "root";
         String password = "rootpass";
 
-        String sql = "INSERT INTO ventas (ClienteId, FechaFactura, TotalNeto, TotalIVA, Total) VALUES (?, ?, 0.00, 0.00, 0.00)";
+        String sql = "INSERT INTO ventas (ClienteId, FechaFactura, TotalBase, TotalIVA, Total) VALUES (?, ?, 0.00, 0.00, 0.00)";
 
         try (Connection conn = DriverManager.getConnection(url, user, password);
              PreparedStatement statement = conn.prepareStatement(sql)) {

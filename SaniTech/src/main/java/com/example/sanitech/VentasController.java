@@ -36,7 +36,7 @@ public class VentasController {
     private TableColumn<Ventas, LocalDate> colFechaFactura;
 
     @FXML
-    private TableColumn<Ventas, BigDecimal> colTotalNeto;
+    private TableColumn<Ventas, BigDecimal> colTotalBase;
 
     @FXML
     private TableColumn<Ventas, BigDecimal> colTotalIVA;
@@ -60,7 +60,7 @@ public class VentasController {
     private Label lbFechaFactura;
 
     @FXML
-    private Label lbTotalNeto;
+    private Label lbTotalBase;
 
     @FXML
     private Label lbTotalIVA;
@@ -71,13 +71,13 @@ public class VentasController {
     @FXML
     private void initialize() {
         // Se establece los items del ComboBox
-        cbVentas.setItems(FXCollections.observableArrayList("VentaId", "ClienteId", "FechaFactura", "TotalNeto", "TotalIVA", "Total"));
+        cbVentas.setItems(FXCollections.observableArrayList("VentaId", "ClienteId", "FechaFactura", "TotalBase", "TotalIVA", "Total"));
 
         // Se configura las columnas de la tabla para que se correspondan con las propiedades del modelo Ventas
         colVentaId.setCellValueFactory(new PropertyValueFactory<>("ventaId"));
         colClienteId.setCellValueFactory(new PropertyValueFactory<>("clienteId"));
         colFechaFactura.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
-        colTotalNeto.setCellValueFactory(new PropertyValueFactory<>("totalNeto"));
+        colTotalBase.setCellValueFactory(new PropertyValueFactory<>("totalBase"));
         colTotalIVA.setCellValueFactory(new PropertyValueFactory<>("totalIVA"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         btnAnadir.setOnAction(event -> abrirVentanaAnadirVenta());
@@ -96,7 +96,7 @@ public class VentasController {
                 lbVentaId.setText(String.valueOf(newSelection.getVentaId()));
                 lbClienteId.setText(String.valueOf(newSelection.getClienteId()));
                 lbFechaFactura.setText(String.valueOf(newSelection.getFechaFactura()));
-                lbTotalNeto.setText(String.valueOf(newSelection.getTotalNeto()));
+                lbTotalBase.setText(String.valueOf(newSelection.getTotalBase()));
                 lbTotalIVA.setText(String.valueOf(newSelection.getTotalIVA()));
                 lbTotal.setText(String.valueOf(newSelection.getTotal()));
             }
@@ -209,7 +209,7 @@ public class VentasController {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass");
 
             // Consulta SQL para obtener los datos de la tabla "ventas"
-            String query = "SELECT VentaId, ClienteId, FechaFactura, TotalNeto, TotalIVA, Total FROM ventas";
+            String query = "SELECT VentaId, ClienteId, FechaFactura, TotalBase, TotalIVA, Total FROM ventas";
             PreparedStatement statement = conn.prepareStatement(query);
             ResultSet rs = statement.executeQuery();
 
@@ -224,10 +224,10 @@ public class VentasController {
                 Date FechaFacturaDB = rs.getDate("FechaFactura");
                 // Convertir java.sql.Date a LocalDate
                 LocalDate FechaFactura = FechaFacturaDB.toLocalDate();
-                BigDecimal TotalNeto = rs.getBigDecimal("TotalNeto");
+                BigDecimal TotalBase = rs.getBigDecimal("TotalBase");
                 BigDecimal TotalIVA = rs.getBigDecimal("TotalIVA");
                 BigDecimal Total = rs.getBigDecimal("Total");
-                tbVentas.getItems().add(new Ventas(VentaId, ClienteId, FechaFactura, TotalNeto, TotalIVA, Total));
+                tbVentas.getItems().add(new Ventas(VentaId, ClienteId, FechaFactura, TotalBase, TotalIVA, Total));
             }
 
             // Cerrar la conexión
@@ -260,8 +260,8 @@ public class VentasController {
             case "FechaFactura":
                 tbVentas.getItems().removeIf(ventas -> !String.valueOf(ventas.getFechaFactura()).toLowerCase().contains(textoFiltrado));
                 break;
-            case "TotalNeto":
-                tbVentas.getItems().removeIf(ventas -> !String.valueOf(ventas.getTotalNeto()).toLowerCase().contains(textoFiltrado));
+            case "TotalBase":
+                tbVentas.getItems().removeIf(ventas -> !String.valueOf(ventas.getTotalBase()).toLowerCase().contains(textoFiltrado));
                 break;
             case "TotalIVA":
                 tbVentas.getItems().removeIf(ventas -> !String.valueOf(ventas.getTotalIVA()).toLowerCase().contains(textoFiltrado));

@@ -301,7 +301,7 @@ public class AnadirlineasventaController {
     }
 
     private void actualizarTotalesEnVentas(Connection connection, int ventaId) throws SQLException {
-        String sql = "UPDATE ventas SET TotalNeto = (SELECT SUM(PrecioVenta * Cantidad) FROM lineas_ventas WHERE VentaId = ?), " +
+        String sql = "UPDATE ventas SET TotalBase = (SELECT SUM(PrecioVenta * Cantidad) FROM lineas_ventas WHERE VentaId = ?), " +
                 "TotalIVA = (SELECT SUM(PrecioVenta * Cantidad * 0.21) FROM lineas_ventas WHERE VentaId = ?), " +
                 "Total = (SELECT SUM(PrecioVenta * Cantidad * 1.21) FROM lineas_ventas WHERE VentaId = ?) " +
                 "WHERE VentaId = ?";

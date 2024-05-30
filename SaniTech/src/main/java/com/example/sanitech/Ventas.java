@@ -12,17 +12,17 @@ public class Ventas {
     private final IntegerProperty VentaId = new SimpleIntegerProperty();
     private final IntegerProperty ClienteId = new SimpleIntegerProperty();
     private final ObjectProperty<LocalDate> FechaFactura = new SimpleObjectProperty<>();
-    private final ObjectProperty<BigDecimal> TotalNeto = new SimpleObjectProperty<>();
+    private final ObjectProperty<BigDecimal> TotalBase = new SimpleObjectProperty<>();
     private final ObjectProperty<BigDecimal> TotalIVA = new SimpleObjectProperty<>();
     private final ObjectProperty<BigDecimal> Total = new SimpleObjectProperty<>();
 
     public Ventas() {}
 
-    public Ventas(int VentaId, int ClienteId, LocalDate FechaFactura, BigDecimal TotalNeto, BigDecimal TotalIVA, BigDecimal Total) {
+    public Ventas(int VentaId, int ClienteId, LocalDate FechaFactura, BigDecimal TotalBase, BigDecimal TotalIVA, BigDecimal Total) {
         setVentaId(VentaId);
         setClienteId(ClienteId);
         setFechaFactura(FechaFactura);
-        setTotalNeto(TotalNeto);
+        setTotalBase(TotalBase);
         setTotalIVA(TotalIVA);
         setTotal(Total);
     }
@@ -39,9 +39,9 @@ public class Ventas {
 
     public void setFechaFactura(LocalDate fechaFactura) {this.FechaFactura.set(fechaFactura);}
 
-    public BigDecimal getTotalNeto() {return TotalNeto.get();}
+    public BigDecimal getTotalBase() {return TotalBase.get();}
 
-    public void setTotalNeto(BigDecimal totalNeto) {this.TotalNeto.set(totalNeto);}
+    public void setTotalBase(BigDecimal totalBase) {this.TotalBase.set(totalBase);}
 
     public BigDecimal getTotalIVA() {return TotalIVA.get();}
 
