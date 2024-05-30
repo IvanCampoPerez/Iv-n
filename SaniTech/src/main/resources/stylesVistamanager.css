@@ -3,8 +3,8 @@
     -fx-background-color: #c1d1e0;
 }
 
-/* Estilos específicos para los botones btnMinimizar y btnCerrar */
-#btnMinimizar, #btnCerrar {
+/* Estilos específicos para los botones btnMinimizar, btnMaximizar y btnCerrar */
+#btnMinimizar, #btnMaximizar ,#btnCerrar {
     -fx-background-color: transparent;
     -fx-text-fill: black;
     -fx-font-size: 14px;
@@ -12,11 +12,11 @@
     -fx-pref-width: 40px;
 }
 
-#btnMinimizar:hover, #btnCerrar:hover {
+#btnMinimizar:hover, #btnMaximizar:hover ,#btnCerrar:hover {
     -fx-background-color: #4390e7;
 }
 
-#btnMinimizar:pressed, #btnCerrar:pressed {
+#btnMinimizar:pressed, #btnMaximizar:pressed ,#btnCerrar:pressed {
     -fx-background-color: #0d66d2;
 }
 
