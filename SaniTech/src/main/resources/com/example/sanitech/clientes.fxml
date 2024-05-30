@@ -10,9 +10,11 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.ClientesController">
    <children>
-      <TableView fx:id="tbClientes" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="tbClientes" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
         <columns>
           <TableColumn fx:id="colClienteId" prefWidth="56.79998779296875" text="ClienteId" />
           <TableColumn fx:id="colNombre" prefWidth="60.00004577636719" text="Nombre" />
@@ -95,8 +97,14 @@
            </font>
        </Label>
       <Label fx:id="lbEmpleadoId" layoutX="29.0" layoutY="469.0" text="EmpleadoId" />
-      <Button fx:id="btnAnadir" layoutX="286.0" layoutY="554.0" mnemonicParsing="false" text="Añadir cliente" />
-      <Button fx:id="btnEliminar" layoutX="1189.0" layoutY="554.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar cliente" />
-      <Button fx:id="btnModificar" layoutX="734.0" layoutY="554.0" mnemonicParsing="false" onAction="#ventanaModificarCliente" text="Modificar cliente" />
+       <HBox layoutX="286.0" layoutY="541.0" spacing="20.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0">
+           <children>
+              <Button fx:id="btnAnadir" layoutX="286.0" layoutY="554.0" mnemonicParsing="false" text="Añadir cliente" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Button fx:id="btnModificar" layoutX="734.0" layoutY="554.0" mnemonicParsing="false" onAction="#ventanaModificarCliente" text="Modificar cliente" />
+               <Region HBox.hgrow="ALWAYS" />
+               <Button fx:id="btnEliminar" layoutX="1189.0" layoutY="554.0" mnemonicParsing="false" onAction="#eliminarCliente" text="Eliminar cliente" />
+           </children>
+       </HBox>
    </children>
 </AnchorPane>

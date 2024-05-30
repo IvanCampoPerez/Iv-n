@@ -10,9 +10,11 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.LineasventaController">
    <children>
-      <TableView fx:id="tbLineasventa" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="tbLineasventa" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
         <columns>
           <TableColumn fx:id="colLineaVentaId" prefWidth="200.0" text="LineaVentaId" />
           <TableColumn fx:id="colVentaId" prefWidth="200.0" text="VentaId" />
@@ -53,7 +55,12 @@
            </font>
        </Label>
       <Label fx:id="lbCantidad" layoutX="29.0" layoutY="340.0" text="Cantidad" />
-      <Button fx:id="btnAnadir" layoutX="286.0" layoutY="551.0" mnemonicParsing="false" text="Añadir lineaventa" />
-      <Button fx:id="btnEliminar" layoutX="1170.0" layoutY="551.0" mnemonicParsing="false" onAction="#eliminarLineasventa" text="Eliminar lineaventa" />
+       <HBox layoutX="286.0" layoutY="541.0" spacing="20.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0">
+           <children>
+              <Button fx:id="btnAnadir" layoutX="286.0" layoutY="551.0" mnemonicParsing="false" text="Añadir lineaventa" />
+               <Region HBox.hgrow="ALWAYS" />
+              <Button fx:id="btnEliminar" layoutX="1170.0" layoutY="551.0" mnemonicParsing="false" onAction="#eliminarLineasventa" text="Eliminar lineaventa" />
+           </children>
+       </HBox>
    </children>
 </AnchorPane>

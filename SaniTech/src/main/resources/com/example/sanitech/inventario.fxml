@@ -10,9 +10,11 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.InventarioController">
    <children>
-      <TableView fx:id="tbInventario" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="tbInventario" layoutX="286.0" layoutY="31.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
         <columns>
           <TableColumn fx:id="colInventarioId" prefWidth="333.0" text="InventarioId" />
           <TableColumn fx:id="colCodigoArticulo" prefWidth="333.0" text="CodigoArticulo" />
@@ -39,6 +41,12 @@
            </font>
        </Label>
       <Label fx:id="lbCantidadDisponible" layoutX="14.0" layoutY="233.0" text="CantidadDisponible" />
-      <Button fx:id="btnModificar" layoutX="725.0" layoutY="552.0" mnemonicParsing="false" onAction="#ventanaModificarInventario" text="Modificar inventario" />
+       <HBox layoutX="286.0" layoutY="541.0" spacing="20.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0">
+           <children>
+               <Region HBox.hgrow="ALWAYS" />
+               <Button fx:id="btnModificar" mnemonicParsing="false" onAction="#ventanaModificarInventario" text="Modificar inventario" />
+               <Region HBox.hgrow="ALWAYS" />
+           </children>
+       </HBox>
    </children>
 </AnchorPane>

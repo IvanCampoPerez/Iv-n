@@ -4,17 +4,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.sanitech.AdministracionController">
    <children>
-      <TableView fx:id="tbUsuarios" layoutX="286.0" layoutY="33.0" prefHeight="500.0" prefWidth="1000.0">
+      <TableView fx:id="tbUsuarios" layoutX="286.0" layoutY="33.0" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="286.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="33.0">
         <columns>
           <TableColumn fx:id="colId" prefWidth="333.0" text="ID" />
           <TableColumn fx:id="colNombre" prefWidth="333.0" text="Nombre" />
             <TableColumn fx:id="colRol" prefWidth="334.0" text="Rol" />
         </columns>
       </TableView>
-      <Button fx:id="btnCrear" layoutX="83.0" layoutY="33.0" mnemonicParsing="false" text="Crear usuario" />
-      <Button fx:id="btnEliminar" layoutX="90.0" layoutY="507.0" mnemonicParsing="false" onAction="#eliminarUsuario" text="Eliminar usuario" />
+       <VBox layoutX="53.0" layoutY="33.0" prefHeight="492.0" prefWidth="234.0" spacing="20.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="1013.0" AnchorPane.topAnchor="33.0">
+           <children>
+               <AnchorPane>
+                   <Button fx:id="btnCrear" layoutY="0" mnemonicParsing="false" text="Crear usuario" AnchorPane.topAnchor="0.0" />
+               </AnchorPane>
+               <Region VBox.vgrow="ALWAYS" />
+               <AnchorPane>
+                   <Button fx:id="btnEliminar" layoutY="0" mnemonicParsing="false" onAction="#eliminarUsuario" text="Eliminar usuario" AnchorPane.bottomAnchor="0.0" />
+               </AnchorPane>
+           </children>
+       </VBox>
    </children>
 </AnchorPane>
