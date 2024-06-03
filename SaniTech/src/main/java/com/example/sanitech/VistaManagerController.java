@@ -78,6 +78,8 @@ public class VistaManagerController {
     private ImageView ivImagenUsuario;
 
     private final String rutaImagenDefecto = getClass().getResource("/user.jpg").toString();
+    private VentasController ventasController;
+    private InventarioController inventarioController;
 
     @FXML
     protected void cerrarVentana(ActionEvent event) {
@@ -141,6 +143,12 @@ public class VistaManagerController {
         Tab tab = new Tab("Compras", loader.load());
         tabPane.getTabs().add(tab);
         tabPane.getSelectionModel().select(tab);
+
+        // Obtiene el controlador de ComprasController
+        ComprasController comprasController = loader.getController();
+
+        // Establece el inventarioController en ComprasController
+        comprasController.setInventarioController(inventarioController);
     }
 
     @FXML
@@ -156,6 +164,9 @@ public class VistaManagerController {
 
         // Se obtiene el rol del usuario actual y lo pasa al método setRolUsuario
         inventarioController.setRolUsuario(rol.getText());
+
+        // Guarda una referencia al InventarioController
+        this.inventarioController = inventarioController;
     }
 
     @FXML
@@ -171,15 +182,32 @@ public class VistaManagerController {
 
         // Se pasa el empleadoId al VentasController
         ventasController.setEmpleadoId(empleadoId);
+
+        // Guarda una referencia al VentasController
+        this.ventasController = ventasController;
     }
 
     @FXML
     public void abrirVentanaLineasventa(ActionEvent event) throws IOException {
+        // Asegura que la ventana de ventas esté cargada primero para obtener el controlador
+        if (ventasController == null) {
+            abrirVentanaVentas(new ActionEvent());
+        }
+
         // Carga la ventana de lineasventa
         FXMLLoader loader = new FXMLLoader(getClass().getResource("lineasventa.fxml"));
         Tab tab = new Tab("Lineasventa", loader.load());
         tabPane.getTabs().add(tab);
         tabPane.getSelectionModel().select(tab);
+
+        // Obtiene el controlador de LineasventaController
+        LineasventaController lineasventaController = loader.getController();
+
+        // Establece el ventasController en LineasventaController
+        lineasventaController.setVentasController(ventasController);
+
+        // Establece el inventarioController en LineasventaController
+        lineasventaController.setInventarioController(inventarioController);
     }
 
     @FXML

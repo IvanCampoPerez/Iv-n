@@ -20,6 +20,9 @@ import java.util.Optional;
 import static com.example.sanitech.CrearusuariosController.mostrarError;
 
 public class LineasventaController {
+    private VentasController ventasController;
+    private InventarioController inventarioController;
+
     @FXML
     private Button btnAnadir;
 
@@ -128,6 +131,14 @@ public class LineasventaController {
         }
     }
 
+    public void setVentasController(VentasController ventasController) {
+        this.ventasController = ventasController;
+    }
+
+    public void setInventarioController(InventarioController inventarioController) {
+        this.inventarioController = inventarioController;
+    }
+
     // Método para eliminar una compra de la base de datos
     private boolean eliminarLineasventaBD(Lineasventa lineasventa) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/saneamientos", "root", "rootpass")) {
@@ -233,6 +244,8 @@ public class LineasventaController {
 
             AnadirlineasventaController anadirlineasventaController = loader.getController();
             anadirlineasventaController.setLineasventaController(this); // Configura la referencia al LineasventaController
+            anadirlineasventaController.setVentasController(ventasController);
+            anadirlineasventaController.setInventarioController(inventarioController);
 
             // Crear una nueva escena
             Scene scene = new Scene(root);

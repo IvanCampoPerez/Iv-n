@@ -21,6 +21,7 @@ import static com.example.sanitech.CrearusuariosController.mostrarError;
 
 public class AnadircomprasController {
     private ComprasController comprasController;
+    private InventarioController inventarioController;
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -50,6 +51,10 @@ public class AnadircomprasController {
 
     public void setComprasController(ComprasController comprasController) {
         this.comprasController = comprasController;
+    }
+
+    public void setInventarioController(InventarioController inventarioController) {
+        this.inventarioController = inventarioController;
     }
 
     private ObservableList<String> sugerenciasArticulos = FXCollections.observableArrayList();
@@ -218,6 +223,11 @@ public class AnadircomprasController {
                     if (filasAfectadas > 0) {
                         // Cargar los datos actualizados en la tabla de ComprasController
                         cargarDatosCompras();
+
+                        // Notificar al InventarioController que actualice sus datos
+                        if (inventarioController != null) {
+                            inventarioController.cargarDatos();
+                        }
                     } else {
                         mostrarError("No se pudo crear la compra");
                     }

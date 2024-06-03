@@ -20,6 +20,8 @@ import static com.example.sanitech.CrearusuariosController.mostrarError;
 
 public class AnadirlineasventaController {
     private LineasventaController lineasventaController;
+    private VentasController ventasController;
+    private InventarioController inventarioController;
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -46,6 +48,14 @@ public class AnadirlineasventaController {
 
     public void setLineasventaController(LineasventaController lineasventaController) {
         this.lineasventaController = lineasventaController;
+    }
+
+    public void setVentasController(VentasController ventasController) {
+        this.ventasController = ventasController;
+    }
+
+    public void setInventarioController(InventarioController inventarioController) {
+        this.inventarioController = inventarioController;
     }
 
     private ObservableList<String> sugerenciasArticulos = FXCollections.observableArrayList();
@@ -203,6 +213,21 @@ public class AnadirlineasventaController {
 
                             // Actualizar las columnas correspondientes en la tabla "ventas"
                             actualizarTotalesEnVentas(connection, Integer.parseInt(ventaId));
+
+                            // Notificar al LineasventaController que actualice sus datos
+                            if (lineasventaController != null) {
+                                lineasventaController.cargarDatos();
+                            }
+
+                            // Notificar al VentasController que actualice sus datos
+                            if (ventasController != null) {
+                                ventasController.cargarDatos();
+                            }
+
+                            // Notificar al InventarioController que actualice sus datos
+                            if (inventarioController != null) {
+                                inventarioController.cargarDatos();
+                            }
                         } else {
                             mostrarError("No se pudo crear la linea de venta");
                         }
@@ -310,7 +335,11 @@ public class AnadirlineasventaController {
             statement.setInt(2, ventaId);
             statement.setInt(3, ventaId);
             statement.setInt(4, ventaId);
-            statement.executeUpdate();
+            int filasAfectadas = statement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                cargarDatosVentas();
+            }
         }
     }
 
@@ -325,6 +354,12 @@ public class AnadirlineasventaController {
     private void cargarDatosLineasVenta() {
         if (lineasventaController != null) {
             lineasventaController.cargarDatos();
+        }
+    }
+
+    private void cargarDatosVentas() {
+        if (ventasController != null) {
+            ventasController.cargarDatos();
         }
     }
 }
