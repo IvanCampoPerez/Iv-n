@@ -297,11 +297,15 @@ public class VistaManagerController {
             scene.getStylesheets().add(getClass().getResource("/stylesModoOscuro.css").toExternalForm());
             // Aplicar la clase CSS modo-oscuro al AnchorPane de administración
             administracionAnchorPane.getStyleClass().add("modo-oscuro");
+            // Aplicar la clase CSS modo-oscuro al TabPane
+            tabPane.getStyleClass().add("modo-oscuro");
         } else {
             // Quitar el archivo CSS del modo oscuro
             scene.getStylesheets().remove(getClass().getResource("/stylesModoOscuro.css").toExternalForm());
             // Quitar la clase CSS modo-oscuro del AnchorPane de administración
             administracionAnchorPane.getStyleClass().remove("modo-oscuro");
+            // Quitar la clase CSS modo-oscuro del TabPane
+            tabPane.getStyleClass().remove("modo-oscuro");
         }
     }
 
