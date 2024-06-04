@@ -88,3 +88,17 @@
     -fx-background-color: #222; /* Establece el color de fondo */
     -fx-text-fill: white; /* Establece el color de texto */
 }
+
+/* Estilo para los headers de las pestañas */
+.modo-oscuro .tab-pane .tab-header-area .tab {
+    -fx-background-color: #333;
+}
+
+.modo-oscuro .tab-pane .tab-header-area .tab .tab-label {
+    -fx-text-fill: white;
+}
+
+.modo-oscuro .tab-pane .tab-header-area .tab:selected {
+    -fx-background-color: #111;
+    -fx-border-color: aqua;
+}
